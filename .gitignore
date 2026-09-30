@@ -4,3 +4,5 @@ backups/
 publish.sh
 __pycache__/
 .DS_Store
+.claude/
+template.html

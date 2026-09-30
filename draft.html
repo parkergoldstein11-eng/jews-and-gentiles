@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Jews and the Gentiles — Draft Day Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #0e1a2e;
+    --bg-1: #142239;
+    --bg-2: #1a2b48;
+    --card: #18263f;
+    --card-hi: #1f304f;
+    --border: #2c4068;
+    --border-strong: #44598a;
+    --text: #f1f3f8;
+    --muted: #8a96b3;
+    --steel: #4a5a7a;
+    --red: #ef3a3a;
+    --red-deep: #b91c1c;
+    --gold: #f5b500;
+    --gold-hi: #ffd34a;
+    --silver: #cfd5e1;
+    --bronze: #c97331;
+    --turf: #1a7f4f;
+    --turf-hi: #22b86c;
+    --pos-QB: #ef4444;
+    --pos-RB: #22c55e;
+    --pos-WR: #3b82f6;
+    --pos-TE: #f59e0b;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg-0); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+  /* Field gridiron background */
+  body {
+    background:
+      repeating-linear-gradient(
+        180deg,
+        transparent 0,
+        transparent 78px,
+        rgba(255,255,255,0.025) 78px,
+        rgba(255,255,255,0.025) 80px
+      ),
+      radial-gradient(900px 500px at 0% -10%, rgba(245, 181, 0, 0.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(239, 58, 58, 0.09), transparent 60%),
+      radial-gradient(700px 400px at 50% 100%, rgba(34, 184, 108, 0.06), transparent 60%),
+      linear-gradient(180deg, #0e1a2e 0%, #122139 100%);
+    min-height: 100vh;
+  }
+
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 28px 22px 90px; }
+
+  /* SCOREBOARD STRIP */
+  .scoreboard {
+    background: linear-gradient(90deg, #102036 0%, #1a2b48 50%, #102036 100%);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 26px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scoreboard::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--red);
+  }
+  .scoreboard::after {
+    content: "";
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--gold);
+  }
+  .scoreboard .live {
+    display: inline-flex; align-items: center; gap: 6px; color: var(--red); font-weight: 700;
+  }
+  .scoreboard .live i {
+    width: 7px; height: 7px; background: var(--red); border-radius: 50%; display: inline-block;
+    box-shadow: 0 0 8px var(--red);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 30px 16px 18px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, transparent 70px, rgba(245, 181, 0, 0.05) 70px, rgba(245, 181, 0, 0.05) 71px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 350px, rgba(255,255,255,0.04) 350px, rgba(255,255,255,0.04) 352px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(245, 181, 0, 0.45);
+    color: var(--gold);
+    background: rgba(245, 181, 0, 0.06);
+    padding: 6px 16px;
+    border-radius: 2px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(56px, 9vw, 120px);
+    letter-spacing: 0.02em;
+    margin: 16px 0 6px;
+    line-height: 0.9;
+    background: linear-gradient(180deg, #ffffff 0%, #98a0b7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  }
+  .hero .sub {
+    color: var(--muted);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .hero .sub b { color: var(--gold); margin: 0 8px; }
+
+  /* TOGGLE */
+  .toggle-row { display: flex; justify-content: center; gap: 8px; margin: 28px 0 8px; }
+  .toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px;
+    display: inline-flex;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.40);
+  }
+  .toggle button {
+    background: transparent;
+    color: var(--muted);
+    border: 0;
+    padding: 12px 26px;
+    border-radius: 2px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .toggle button.active {
+    background: linear-gradient(180deg, var(--red) 0%, var(--red-deep) 100%);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(239, 58, 58, 0.40), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0 14px;
+    display: flex; align-items: baseline; gap: 14px;
+    position: relative;
+  }
+  .section-title::before {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 28px;
+    background: linear-gradient(180deg, var(--red), var(--red-deep));
+    margin-right: 4px;
+  }
+  .section-title .hint { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 0.18em; font-weight: 500; color: var(--muted); text-transform: uppercase; }
+
+  /* STANDINGS GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 14px;
+  }
+  .team {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .team:hover { transform: translateY(-2px); background: var(--card-hi); border-color: var(--border-strong); }
+
+  /* Rank stripe */
+  .team .stripe {
+    height: 6px;
+    background: var(--steel);
+    background-image: repeating-linear-gradient(135deg, transparent 0, transparent 8px, rgba(0,0,0,0.20) 8px, rgba(0,0,0,0.20) 12px);
+  }
+  .team.rank-1 .stripe { background: linear-gradient(90deg, var(--gold) 0%, var(--gold-hi) 100%); background-image: none; }
+  .team.rank-2 .stripe { background: linear-gradient(90deg, #aab1c0 0%, var(--silver) 100%); background-image: none; }
+  .team.rank-3 .stripe { background: linear-gradient(90deg, #a05518 0%, var(--bronze) 100%); background-image: none; }
+  .team.rank-1 { box-shadow: 0 8px 28px rgba(245, 181, 0, 0.10); }
+
+  .team .body { padding: 16px 18px 14px; }
+
+  .team-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .rank-block {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 54px; padding: 6px 8px;
+    background: rgba(0,0,0,0.30);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+  .rank-block .num {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px; line-height: 0.9;
+    color: #fff;
+  }
+  .team.rank-1 .rank-block .num { color: var(--gold-hi); }
+  .team.rank-2 .rank-block .num { color: var(--silver); }
+  .team.rank-3 .rank-block .num { color: var(--bronze); }
+  .rank-block .lbl { font-family: 'Oswald', sans-serif; font-size: 9px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; margin-top: 2px; }
+
+  .team .owner { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1; }
+  .team .draft-tag { color: var(--muted); font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
+
+  .you-badge {
+    background: var(--you);
+    color: #1a0d2e;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    vertical-align: middle;
+  }
+
+  .team-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 14px; }
+  .stat {
+    background: rgba(0,0,0,0.30);
+    border-top: 2px solid var(--steel);
+    padding: 9px 4px;
+    text-align: center;
+  }
+  .stat.active { border-top-color: var(--red); }
+  .stat .v {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px; line-height: 1;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat.active .v { color: var(--gold-hi); }
+  .stat .l {
+    color: var(--muted);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* POSITION BAR */
+  .pos-bar { display: flex; height: 5px; margin-top: 14px; overflow: hidden; background: rgba(0,0,0,0.30); }
+  .pos-bar span { height: 100%; }
+  .pos-legend { display: flex; gap: 12px; margin-top: 8px; font-size: 10px; color: var(--muted); flex-wrap: wrap; font-family: 'Oswald', sans-serif; letter-spacing: 0.10em; text-transform: uppercase; }
+  .pos-legend i { display: inline-block; width: 8px; height: 8px; vertical-align: middle; margin-right: 4px; }
+
+  .team .expand-hint {
+    color: var(--muted);
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    margin-top: 14px;
+    text-align: center;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+  }
+  .team:hover .expand-hint { color: var(--gold); }
+
+  /* ROSTER */
+  .roster {
+    display: none;
+    margin-top: 4px;
+    background: rgba(0,0,0,0.20);
+    border-top: 1px solid var(--border);
+  }
+  .team.open .roster { display: block; }
+  .team.open .expand-hint::after { content: " ▲"; }
+  .team:not(.open) .expand-hint::after { content: " ▼"; }
+  .roster-head {
+    display: grid;
+    grid-template-columns: 38px 1fr 70px;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.30);
+    border-bottom: 1px solid var(--border);
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .player {
+    display: grid;
+    grid-template-columns: 38px 1fr 70px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(120, 145, 200, 0.06);
+  }
+  .player:last-child { border-bottom: 0; }
+  .pick-num {
+    font-family: 'Oswald', sans-serif;
+    color: var(--muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    background: rgba(0,0,0,0.30);
+    padding: 4px 0;
+    border: 1px solid var(--border);
+  }
+  .pname { font-weight: 600; font-size: 14px; display: flex; align-items: center; }
+  .pmeta { color: var(--muted); font-size: 11px; font-family: 'Oswald', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+  .pos-chip {
+    display: inline-block; padding: 2px 6px; font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.10em; margin-right: 8px; color: #0b0f1c;
+    min-width: 26px; text-align: center;
+  }
+  .pos-chip.QB { background: var(--pos-QB); color: #fff; }
+  .pos-chip.RB { background: var(--pos-RB); }
+  .pos-chip.WR { background: var(--pos-WR); color: #fff; }
+  .pos-chip.TE { background: var(--pos-TE); }
+  .pval {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    color: var(--gold-hi);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* INSIGHTS */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .insight {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--steel);
+    border-radius: 2px;
+    padding: 14px 16px;
+    position: relative;
+  }
+  .insight.red { border-left-color: var(--red); }
+  .insight.gold { border-left-color: var(--gold); }
+  .insight.green { border-left-color: var(--turf-hi); }
+  .insight.blue { border-left-color: var(--pos-WR); }
+  .insight.purple { border-left-color: var(--you); }
+  .insight.orange { border-left-color: var(--pos-TE); }
+
+  .insight .icon { font-size: 22px; }
+  .insight .label {
+    color: var(--muted);
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .insight .winner {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .insight .detail {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 1.45;
+  }
+
+  /* SUPERLATIVES */
+  .superlatives {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 14px;
+  }
+  .superlative {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 18px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .superlative:hover { transform: translateY(-2px); border-color: var(--border-strong); }
+  .superlative::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-hi) 50%, var(--gold) 100%);
+  }
+  .superlative .sup-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 12px;
+  }
+  .superlative .sup-icon {
+    font-size: 30px;
+    line-height: 1;
+    width: 54px;
+    height: 54px;
+    background: rgba(245, 181, 0, 0.10);
+    border: 1px solid rgba(245, 181, 0, 0.35);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .superlative .sup-meta { flex: 1; min-width: 0; }
+  .superlative .sup-award {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gold-hi);
+    line-height: 1.05;
+  }
+  .superlative .sup-owner {
+    color: var(--muted);
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .superlative .sup-detail {
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+    border-top: 1px dashed var(--border);
+    padding-top: 10px;
+  }
+
+  /* POSITION KINGS */
+  .position-kings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .pking {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 16px 18px;
+    border-top: 5px solid var(--steel);
+  }
+  .pking.QB { border-top-color: var(--pos-QB); }
+  .pking.RB { border-top-color: var(--pos-RB); }
+  .pking.WR { border-top-color: var(--pos-WR); }
+  .pking.TE { border-top-color: var(--pos-TE); }
+  .pking .pos-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .pking .pos-title.QB { color: var(--pos-QB); }
+  .pking .pos-title.RB { color: var(--pos-RB); }
+  .pking .pos-title.WR { color: var(--pos-WR); }
+  .pking .pos-title.TE { color: var(--pos-TE); }
+  .pking .pos-sub { color: var(--muted); font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+  .pking ol { list-style: none; padding: 0; margin: 0; }
+  .pking ol li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed rgba(120, 145, 200, 0.10); font-size: 13px; }
+  .pking ol li:last-child { border-bottom: 0; }
+  .pking ol li b { font-weight: 700; }
+  .pking ol li.crown b { color: var(--gold-hi); }
+  .pking ol li.crown::before { content: "👑 "; }
+  .pking ol li.you b { color: var(--you); }
+  .pking ol li span.v { font-family: 'Anton', sans-serif; color: var(--gold-hi); font-size: 16px; font-variant-numeric: tabular-nums; }
+
+  /* CHART */
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 22px 20px;
+  }
+  .chart-row { display: grid; grid-template-columns: 140px 1fr 90px; align-items: center; gap: 14px; padding: 7px 0; }
+  .chart-row .owner-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .chart-row .owner-name.you-row { color: var(--you); }
+  .chart-bars { display: flex; height: 22px; overflow: hidden; background: rgba(0,0,0,0.30); border: 1px solid var(--border); }
+  .chart-bars span { height: 100%; transition: width 0.4s ease, filter 0.15s ease, transform 0.15s ease; cursor: default; }
+  .chart-bars span:hover { filter: brightness(1.25); }
+  .chart-bars span.dimmed { filter: brightness(0.5); }
+
+  /* HOVER TOOLTIP */
+  #chart-tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(8, 14, 28, 0.97);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 10px 14px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65);
+    min-width: 180px;
+    transform: translate(-50%, -100%);
+  }
+  #chart-tooltip.visible { opacity: 1; }
+  #chart-tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: rgba(8, 14, 28, 0.97);
+    border-right: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+  }
+  #chart-tooltip .tip-row1 { display: flex; align-items: center; gap: 8px; }
+  #chart-tooltip .tip-chip { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
+  #chart-tooltip .tip-pos { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; line-height: 1; }
+  #chart-tooltip .tip-owner { color: var(--muted); font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 6px; }
+  #chart-tooltip .tip-val { font-family: 'Anton', sans-serif; font-size: 28px; color: var(--gold-hi); font-variant-numeric: tabular-nums; line-height: 1; margin-top: 6px; }
+  #chart-tooltip .tip-meta { color: var(--muted); font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+  .chart-total { font-family: 'Anton', sans-serif; font-size: 20px; text-align: right; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
+
+  /* BIG BOARD */
+  .toplist { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+  .topcard {
+    background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--steel); border-radius: 2px; padding: 12px 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .topcard.gold { border-left-color: var(--gold); }
+  .topcard.silver { border-left-color: var(--silver); }
+  .topcard.bronze { border-left-color: var(--bronze); }
+  .topcard .rank {
+    font-family: 'Anton', sans-serif;
+    color: var(--muted);
+    font-size: 26px;
+    width: 30px;
+    text-align: center;
+    line-height: 1;
+  }
+  .topcard.gold .rank { color: var(--gold-hi); }
+  .topcard.silver .rank { color: var(--silver); }
+  .topcard.bronze .rank { color: var(--bronze); }
+  .topcard .info .pname { font-size: 14px; }
+  .topcard .info .pmeta { color: var(--muted); font-size: 10px; }
+  .topcard .v {
+    margin-left: auto;
+    font-family: 'Anton', sans-serif;
+    color: var(--gold-hi);
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 70px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+  }
+  footer .divider {
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    vertical-align: middle;
+    margin: 0 14px;
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 18px 12px 60px; }
+    .scoreboard { font-size: 9px; letter-spacing: 0.10em; padding: 8px 12px; }
+    .chart-row { grid-template-columns: 100px 1fr 70px; gap: 8px; }
+    .section-title { font-size: 28px; }
+    .hero h1 { font-size: 60px; }
+  }
+</style>
+</head>
+<body>
+<a href="./" style="display:block;text-align:center;padding:10px 16px;background:#f5b500;color:#0e1a2e;font:700 14px Inter,system-ui,sans-serif;text-decoration:none;letter-spacing:.04em">&larr; DRAFT DAY ARCHIVE &middot; BACK TO THE 2026 SEASON</a>
+<div class="wrap">
+
+  <div class="scoreboard">
+    <span class="live"><i></i> Draft Final</span>
+    <span>12 Teams · 264 Picks · 22 Rounds</span>
+    <span>Values · FantasyCalc</span>
+  </div>
+
+  <header class="hero">
+    <span class="kicker">★ Power Rankings ★</span>
+    <h1>THE JEWS<br/>&amp; THE GENTILES</h1>
+    <p class="sub">Standings <b>·</b> Locker Rooms <b>·</b> The Big Board</p>
+  </header>
+
+  <div class="toggle-row">
+    <div class="toggle" role="tablist">
+      <button id="t-dynasty" class="active" data-mode="dynasty">Dynasty</button>
+      <button id="t-redraft" data-mode="redraft">Redraft</button>
+    </div>
+  </div>
+
+  <div class="section-title">Power Rankings <span class="hint">// Tap a card to open the locker room</span></div>
+  <div id="standings" class="grid"></div>
+
+  <div class="section-title">Storylines <span class="hint">// Narratives the data is screaming</span></div>
+  <div id="insights" class="insights-grid"></div>
+
+  <div class="section-title">Team Superlatives <span class="hint">// One award. One owner. One reason.</span></div>
+  <div id="superlatives" class="superlatives"></div>
+
+  <div class="section-title">Position Kings <span class="hint">// Best room at every spot</span></div>
+  <div id="positions" class="position-kings"></div>
+
+  <div class="section-title">Roster Construction <span class="hint">// Where the value lives</span></div>
+  <div class="chart-card" id="chart"></div>
+
+  <div class="section-title">The Big Board <span class="hint">// Top 10 assets in the league</span></div>
+  <div id="top10" class="toplist"></div>
+
+  <footer>
+    <span class="divider"></span> The Jews and the Gentiles <span class="divider"></span>
+  </footer>
+
+</div>
+
+<div id="chart-tooltip" role="tooltip">
+  <div class="tip-row1"><span class="tip-chip"></span><span class="tip-pos"></span></div>
+  <div class="tip-owner"></div>
+  <div class="tip-val"></div>
+  <div class="tip-meta"></div>
+</div>
+
+<script>
+const TEAMS = [
+  { slot:1, owner:"CONNORSEPT", avgAge:25.6, dynasty:54766, redraft:33977, players:[
+    {pick:1, name:"Josh Allen", nfl:"BUF", pos:"QB", age:30.0, dynasty:10212, redraft:10310},
+    {pick:24, name:"Patrick Mahomes", nfl:"KC", pos:"QB", age:30.7, dynasty:5858, redraft:8262},
+    {pick:36, name:"George Pickens", nfl:"DAL", pos:"WR", age:25.2, dynasty:4468, redraft:3513},
+    {pick:37, name:"Tyler Warren", nfl:"IND", pos:"TE", age:24.0, dynasty:4365, redraft:2707},
+    {pick:60, name:"Rome Odunze", nfl:"CHI", pos:"WR", age:24.0, dynasty:3761, redraft:2062},
+    {pick:61, name:"Travis Etienne", nfl:"NO", pos:"RB", age:27.3, dynasty:2959, redraft:2779},
+    {pick:108, name:"Bryce Young", nfl:"CAR", pos:"QB", age:24.8, dynasty:2712, redraft:1797},
+    {pick:84, name:"Alec Pierce", nfl:"IND", pos:"WR", age:26.1, dynasty:2530, redraft:1124},
+    {pick:85, name:"Bhayshul Tuten", nfl:"JAX", pos:"RB", age:23.3, dynasty:2147, redraft:537},
+    {pick:109, name:"Matthew Golden", nfl:"GB", pos:"WR", age:22.8, dynasty:2028, redraft:179},
+    {pick:133, name:"Jonathon Brooks", nfl:"CAR", pos:"RB", age:22.8, dynasty:1662, redraft:140},
+    {pick:180, name:"Chris Brazzell", nfl:"CAR", pos:"WR", age:22.7, dynasty:1496, redraft:8},
+    {pick:132, name:"Jalen Coker", nfl:"CAR", pos:"WR", age:24.6, dynasty:1423, redraft:50},
+    {pick:157, name:"Jordan Mason", nfl:"MIN", pos:"RB", age:27.0, dynasty:1370, redraft:251},
+    {pick:156, name:"Brandon Aiyuk", nfl:"SF", pos:"WR", age:28.2, dynasty:1219, redraft:87},
+    {pick:228, name:"Hunter Henry", nfl:"NE", pos:"TE", age:31.5, dynasty:1168, redraft:171},
+    {pick:205, name:"Tory Horton", nfl:"SEA", pos:"WR", age:23.5, dynasty:1122, redraft:0},
+    {pick:204, name:"Tank Dell", nfl:"HOU", pos:"WR", age:26.6, dynasty:1053, redraft:0},
+    {pick:253, name:"Cade Klubnik", nfl:"NYJ", pos:"QB", age:22.6, dynasty:1038, redraft:0},
+    {pick:252, name:"Garrett Nussmeier", nfl:"KC", pos:"QB", age:24.3, dynasty:830, redraft:0},
+    {pick:181, name:"Jake Tonges", nfl:"SF", pos:"TE", age:26.9, dynasty:813, redraft:0},
+    {pick:229, name:"Sean Tucker", nfl:"TB", pos:"RB", age:24.6, dynasty:532, redraft:0}
+  ]},
+  { slot:2, owner:"DANCOLUCCI", avgAge:26.3, dynasty:53618, redraft:37756, players:[
+    {pick:2, name:"Drake Maye", nfl:"NE", pos:"QB", age:23.7, dynasty:8885, redraft:9194},
+    {pick:23, name:"Jalen Hurts", nfl:"PHI", pos:"QB", age:27.8, dynasty:5509, redraft:6844},
+    {pick:35, name:"Emeka Egbuka", nfl:"TB", pos:"WR", age:23.6, dynasty:4641, redraft:2955},
+    {pick:38, name:"Nico Collins", nfl:"HOU", pos:"WR", age:27.2, dynasty:4285, redraft:4084},
+    {pick:62, name:"Sam LaPorta", nfl:"DET", pos:"TE", age:25.4, dynasty:3089, redraft:1558},
+    {pick:59, name:"Javonte Williams", nfl:"DAL", pos:"RB", age:26.1, dynasty:3073, redraft:2553},
+    {pick:83, name:"Derrick Henry", nfl:"BAL", pos:"RB", age:32.4, dynasty:2867, redraft:4327},
+    {pick:86, name:"David Montgomery", nfl:"HOU", pos:"RB", age:29.0, dynasty:2220, redraft:1877},
+    {pick:107, name:"Davante Adams", nfl:"LAR", pos:"WR", age:33.4, dynasty:2108, redraft:2028},
+    {pick:110, name:"Travis Hunter", nfl:"JAX", pos:"WR", age:23.0, dynasty:2046, redraft:201},
+    {pick:158, name:"Michael Penix", nfl:"ATL", pos:"QB", age:26.0, dynasty:1880, redraft:778},
+    {pick:131, name:"Romeo Doubs", nfl:"NE", pos:"WR", age:26.1, dynasty:1741, redraft:291},
+    {pick:155, name:"Mark Andrews", nfl:"BAL", pos:"TE", age:30.7, dynasty:1552, redraft:519},
+    {pick:179, name:"Rachaad White", nfl:"WAS", pos:"RB", age:27.4, dynasty:1488, redraft:405},
+    {pick:134, name:"Woody Marks", nfl:"HOU", pos:"RB", age:25.4, dynasty:1339, redraft:127},
+    {pick:206, name:"Skyler Bell", nfl:"BUF", pos:"WR", age:23.9, dynasty:1329, redraft:3},
+    {pick:182, name:"Tre' Harris", nfl:"LAC", pos:"WR", age:24.2, dynasty:1321, redraft:9},
+    {pick:251, name:"Brenen Thompson", nfl:"LAC", pos:"WR", age:22.8, dynasty:921, redraft:0},
+    {pick:230, name:"Deebo Samuel", nfl:"FA", pos:"WR", age:30.4, dynasty:870, redraft:3},
+    {pick:254, name:"Kevin Coleman", nfl:"MIA", pos:"WR", age:22.7, dynasty:837, redraft:0},
+    {pick:227, name:"Trey Benson", nfl:"ARI", pos:"RB", age:23.8, dynasty:824, redraft:0},
+    {pick:203, name:"Kimani Vidal", nfl:"LAC", pos:"RB", age:24.7, dynasty:793, redraft:0}
+  ]},
+  { slot:3, owner:"TMAD95", avgAge:26.1, dynasty:53935, redraft:39020, players:[
+    {pick:3, name:"Bijan Robinson", nfl:"ATL", pos:"RB", age:24.3, dynasty:10146, redraft:9845},
+    {pick:22, name:"Justin Herbert", nfl:"LAC", pos:"QB", age:28.2, dynasty:5848, redraft:7435},
+    {pick:39, name:"Christian McCaffrey", nfl:"SF", pos:"RB", age:30.0, dynasty:4039, redraft:5981},
+    {pick:34, name:"Chase Brown", nfl:"CIN", pos:"RB", age:26.2, dynasty:3599, redraft:3517},
+    {pick:63, name:"Tucker Kraft", nfl:"GB", pos:"TE", age:25.5, dynasty:3574, redraft:2296},
+    {pick:58, name:"Zay Flowers", nfl:"BAL", pos:"WR", age:25.7, dynasty:3152, redraft:1841},
+    {pick:82, name:"Sam Darnold", nfl:"SEA", pos:"QB", age:29.0, dynasty:2956, redraft:3060},
+    {pick:106, name:"Malik Willis", nfl:"MIA", pos:"QB", age:27.0, dynasty:2522, redraft:1889},
+    {pick:87, name:"Christian Watson", nfl:"GB", pos:"WR", age:27.0, dynasty:2137, redraft:849},
+    {pick:111, name:"Jayden Higgins", nfl:"HOU", pos:"WR", age:23.4, dynasty:1808, redraft:126},
+    {pick:130, name:"Chris Godwin", nfl:"TB", pos:"WR", age:30.2, dynasty:1579, redraft:560},
+    {pick:154, name:"Tony Pollard", nfl:"TEN", pos:"RB", age:29.1, dynasty:1538, redraft:699},
+    {pick:183, name:"Ted Hurst", nfl:"TB", pos:"WR", age:21.9, dynasty:1512, redraft:0},
+    {pick:178, name:"Dallas Goedert", nfl:"PHI", pos:"TE", age:31.4, dynasty:1496, redraft:514},
+    {pick:135, name:"J.K. Dobbins", nfl:"DEN", pos:"RB", age:27.4, dynasty:1463, redraft:384},
+    {pick:159, name:"Isaac TeSlaa", nfl:"DET", pos:"WR", age:24.2, dynasty:1268, redraft:0},
+    {pick:207, name:"Jaylin Noel", nfl:"HOU", pos:"WR", age:23.7, dynasty:1156, redraft:0},
+    {pick:202, name:"Kaelon Black", nfl:"SF", pos:"RB", age:24.6, dynasty:1149, redraft:24},
+    {pick:226, name:"Adam Randall", nfl:"BAL", pos:"RB", age:21.9, dynasty:1098, redraft:0},
+    {pick:0, name:"Eli Heidenreich", nfl:"PIT", pos:"RB", age:22.9, dynasty:838, redraft:0},
+    {pick:231, name:"MarShawn Lloyd", nfl:"GB", pos:"RB", age:25.4, dynasty:596, redraft:0},
+    {pick:250, name:"Matt Hibner", nfl:"BAL", pos:"TE", age:24.2, dynasty:461, redraft:0}
+  ]},
+  { slot:4, owner:"KUHNERRR", avgAge:24.1, dynasty:55344, redraft:30380, players:[
+    {pick:4, name:"Jahmyr Gibbs", nfl:"DET", pos:"RB", age:24.2, dynasty:9422, redraft:9238},
+    {pick:21, name:"De'Von Achane", nfl:"MIA", pos:"RB", age:24.6, dynasty:5960, redraft:6322},
+    {pick:33, name:"Carnell Tate", nfl:"TEN", pos:"WR", age:21.3, dynasty:4309, redraft:1616},
+    {pick:40, name:"Breece Hall", nfl:"NYJ", pos:"RB", age:25.0, dynasty:4041, redraft:3729},
+    {pick:57, name:"Cam Ward", nfl:"TEN", pos:"QB", age:24.0, dynasty:3894, redraft:3508},
+    {pick:64, name:"Makai Lemon", nfl:"PHI", pos:"WR", age:22.0, dynasty:3558, redraft:1163},
+    {pick:81, name:"C.J. Stroud", nfl:"HOU", pos:"QB", age:24.6, dynasty:3298, redraft:2687},
+    {pick:105, name:"Jordan Addison", nfl:"MIN", pos:"WR", age:24.3, dynasty:2172, redraft:432},
+    {pick:88, name:"Oronde Gadsden", nfl:"LAC", pos:"TE", age:22.9, dynasty:2063, redraft:189},
+    {pick:129, name:"Jayden Reed", nfl:"GB", pos:"WR", age:26.1, dynasty:1753, redraft:296},
+    {pick:112, name:"Quentin Johnston", nfl:"LAC", pos:"WR", age:24.7, dynasty:1749, redraft:184},
+    {pick:153, name:"J.J. McCarthy", nfl:"MIN", pos:"QB", age:23.3, dynasty:1651, redraft:275},
+    {pick:177, name:"Zachariah Branch", nfl:"ATL", pos:"WR", age:22.1, dynasty:1523, redraft:0},
+    {pick:232, name:"Deshaun Watson", nfl:"CLE", pos:"QB", age:30.7, dynasty:1452, redraft:574},
+    {pick:136, name:"Tyler Allgeier", nfl:"ARI", pos:"RB", age:26.1, dynasty:1317, redraft:155},
+    {pick:160, name:"Gunnar Helm", nfl:"TEN", pos:"TE", age:23.7, dynasty:1275, redraft:0},
+    {pick:208, name:"Jack Bech", nfl:"LV", pos:"WR", age:23.4, dynasty:1251, redraft:0},
+    {pick:184, name:"Tank Bigsby", nfl:"PHI", pos:"RB", age:23.7, dynasty:1155, redraft:2},
+    {pick:201, name:"Keaton Mitchell", nfl:"LAC", pos:"RB", age:24.3, dynasty:1129, redraft:10},
+    {pick:249, name:"Oscar Delp", nfl:"NO", pos:"TE", age:22.8, dynasty:1060, redraft:0},
+    {pick:225, name:"Adonai Mitchell", nfl:"NYJ", pos:"WR", age:23.6, dynasty:718, redraft:0},
+    {pick:256, name:"DJ Giddens", nfl:"IND", pos:"RB", age:22.7, dynasty:594, redraft:0}
+  ]},
+  { slot:5, owner:"HDTV69", avgAge:26.3, dynasty:56917, redraft:37750, players:[
+    {pick:5, name:"Ja'Marr Chase", nfl:"CIN", pos:"WR", age:26.2, dynasty:9729, redraft:9533},
+    {pick:20, name:"Omarion Hampton", nfl:"LAC", pos:"RB", age:23.2, dynasty:5809, redraft:5194},
+    {pick:32, name:"Bo Nix", nfl:"DEN", pos:"QB", age:26.2, dynasty:4930, redraft:5870},
+    {pick:41, name:"Garrett Wilson", nfl:"NYJ", pos:"WR", age:25.8, dynasty:4228, redraft:3438},
+    {pick:65, name:"Harold Fannin", nfl:"CLE", pos:"TE", age:21.8, dynasty:3397, redraft:976},
+    {pick:56, name:"Kyren Williams", nfl:"LAR", pos:"RB", age:25.7, dynasty:3345, redraft:2869},
+    {pick:80, name:"Tyler Shough", nfl:"NO", pos:"QB", age:26.6, dynasty:3307, redraft:3189},
+    {pick:89, name:"D'Andre Swift", nfl:"CHI", pos:"RB", age:27.4, dynasty:2200, redraft:1421},
+    {pick:152, name:"George Kittle", nfl:"SF", pos:"TE", age:32.6, dynasty:2002, redraft:1487},
+    {pick:113, name:"Michael Pittman", nfl:"PIT", pos:"WR", age:28.6, dynasty:1874, redraft:761},
+    {pick:104, name:"Zach Charbonnet", nfl:"SEA", pos:"RB", age:25.4, dynasty:1809, redraft:522},
+    {pick:128, name:"Germie Bernard", nfl:"PIT", pos:"WR", age:22.5, dynasty:1784, redraft:69},
+    {pick:195, name:"Emmett Johnson", nfl:"KC", pos:"RB", age:22.6, dynasty:1661, redraft:122},
+    {pick:176, name:"Malachi Fields", nfl:"NYG", pos:"WR", age:22.7, dynasty:1541, redraft:20},
+    {pick:161, name:"Geno Smith", nfl:"NYJ", pos:"QB", age:35.6, dynasty:1527, redraft:1119},
+    {pick:137, name:"Jacory Croskey-Merritt", nfl:"WAS", pos:"RB", age:25.1, dynasty:1478, redraft:194},
+    {pick:233, name:"Aaron Jones", nfl:"MIN", pos:"RB", age:31.5, dynasty:1298, redraft:597},
+    {pick:185, name:"Stefon Diggs", nfl:"FA", pos:"WR", age:32.5, dynasty:1262, redraft:356},
+    {pick:219, name:"Drew Allar", nfl:"PIT", pos:"QB", age:22.2, dynasty:1181, redraft:13},
+    {pick:248, name:"Malik Washington", nfl:"MIA", pos:"WR", age:25.4, dynasty:793, redraft:0},
+    {pick:224, name:"Theo Johnson", nfl:"NYG", pos:"TE", age:25.2, dynasty:709, redraft:0},
+    {pick:0, name:"Jalen Milroe", nfl:"SEA", pos:"QB", age:23.4, dynasty:661, redraft:0},
+    {pick:257, name:"Ryan Flournoy", nfl:"DAL", pos:"WR", age:26.6, dynasty:392, redraft:0}
+  ]},
+  { slot:6, owner:"EBACCASH", avgAge:25.7, dynasty:49671, redraft:35179, players:[
+    {pick:6, name:"Jayden Daniels", nfl:"WAS", pos:"QB", age:25.4, dynasty:7194, redraft:8271},
+    {pick:19, name:"CeeDee Lamb", nfl:"DAL", pos:"WR", age:27.1, dynasty:6113, redraft:6566},
+    {pick:31, name:"Jonathan Taylor", nfl:"IND", pos:"RB", age:27.3, dynasty:4939, redraft:6334},
+    {pick:42, name:"Jordan Love", nfl:"GB", pos:"QB", age:27.6, dynasty:4244, redraft:5081},
+    {pick:55, name:"Tee Higgins", nfl:"CIN", pos:"WR", age:27.3, dynasty:3230, redraft:2485},
+    {pick:103, name:"Terry McLaurin", nfl:"WAS", pos:"WR", age:30.7, dynasty:2325, redraft:1846},
+    {pick:79, name:"DK Metcalf", nfl:"PIT", pos:"WR", age:28.4, dynasty:2105, redraft:1038},
+    {pick:90, name:"Jake Ferguson", nfl:"DAL", pos:"TE", age:27.3, dynasty:2039, redraft:711},
+    {pick:127, name:"Xavier Worthy", nfl:"KC", pos:"WR", age:23.1, dynasty:1934, redraft:157},
+    {pick:138, name:"Dalton Kincaid", nfl:"BUF", pos:"TE", age:26.6, dynasty:1902, redraft:451},
+    {pick:66, name:"RJ Harvey", nfl:"DEN", pos:"RB", age:25.3, dynasty:1875, redraft:585},
+    {pick:114, name:"Jaylen Warren", nfl:"PIT", pos:"RB", age:27.6, dynasty:1761, redraft:819},
+    {pick:162, name:"Tua Tagovailoa", nfl:"ATL", pos:"QB", age:28.2, dynasty:1655, redraft:674},
+    {pick:175, name:"Rashid Shaheed", nfl:"SEA", pos:"WR", age:27.7, dynasty:1329, redraft:126},
+    {pick:199, name:"Dylan Sampson", nfl:"CLE", pos:"RB", age:21.7, dynasty:1310, redraft:0},
+    {pick:151, name:"Tyjae Spears", nfl:"TEN", pos:"RB", age:24.9, dynasty:1149, redraft:35},
+    {pick:186, name:"Kayshon Boutte", nfl:"NE", pos:"WR", age:24.0, dynasty:1106, redraft:0},
+    {pick:210, name:"Elijah Arroyo", nfl:"SEA", pos:"TE", age:23.1, dynasty:835, redraft:0},
+    {pick:234, name:"Kyle Williams", nfl:"NE", pos:"WR", age:23.5, dynasty:749, redraft:0},
+    {pick:247, name:"Jaylen Wright", nfl:"MIA", pos:"RB", age:23.1, dynasty:700, redraft:0},
+    {pick:223, name:"Jordan James", nfl:"SF", pos:"RB", age:22.1, dynasty:685, redraft:0},
+    {pick:258, name:"Marvin Mims", nfl:"DEN", pos:"WR", age:24.2, dynasty:492, redraft:0}
+  ]},
+  { slot:7, owner:"JUANVIDAL", avgAge:27.4, dynasty:59621, redraft:45596, players:[
+    {pick:7, name:"Jaxon Smith-Njigba", nfl:"SEA", pos:"WR", age:24.3, dynasty:9620, redraft:8399},
+    {pick:18, name:"Justin Jefferson", nfl:"MIN", pos:"WR", age:26.9, dynasty:6959, redraft:7221},
+    {pick:30, name:"James Cook", nfl:"BUF", pos:"RB", age:26.7, dynasty:4952, redraft:6022},
+    {pick:67, name:"Dak Prescott", nfl:"DAL", pos:"QB", age:32.8, dynasty:4036, redraft:6202},
+    {pick:43, name:"Kenneth Walker", nfl:"KC", pos:"RB", age:25.6, dynasty:4010, redraft:3945},
+    {pick:54, name:"A.J. Brown", nfl:"PHI", pos:"WR", age:28.9, dynasty:3542, redraft:3567},
+    {pick:78, name:"Jaylen Waddle", nfl:"DEN", pos:"WR", age:27.5, dynasty:3300, redraft:2627},
+    {pick:91, name:"KC Concepcion", nfl:"CLE", pos:"WR", age:21.7, dynasty:2976, redraft:607},
+    {pick:115, name:"Kyler Murray", nfl:"MIN", pos:"QB", age:28.8, dynasty:2847, redraft:2813},
+    {pick:102, name:"Eli Stowers", nfl:"PHI", pos:"TE", age:23.1, dynasty:2526, redraft:508},
+    {pick:126, name:"Chris Bell", nfl:"MIA", pos:"WR", age:22.0, dynasty:2020, redraft:111},
+    {pick:150, name:"Kenneth Gainwell", nfl:"TB", pos:"RB", age:27.2, dynasty:1572, redraft:491},
+    {pick:139, name:"Brenton Strange", nfl:"JAX", pos:"TE", age:25.4, dynasty:1544, redraft:107},
+    {pick:163, name:"Travis Kelce", nfl:"KC", pos:"TE", age:36.6, dynasty:1434, redraft:995},
+    {pick:174, name:"Aaron Rodgers", nfl:"PIT", pos:"QB", age:42.5, dynasty:1410, redraft:1434},
+    {pick:235, name:"Max Klare", nfl:"LAR", pos:"TE", age:22.9, dynasty:1329, redraft:0},
+    {pick:211, name:"Isiah Pacheco", nfl:"DET", pos:"RB", age:27.2, dynasty:1245, redraft:171},
+    {pick:246, name:"Alvin Kamara", nfl:"NO", pos:"RB", age:30.8, dynasty:1188, redraft:364},
+    {pick:198, name:"Keon Coleman", nfl:"BUF", pos:"WR", age:23.0, dynasty:1186, redraft:0},
+    {pick:187, name:"Mac Jones", nfl:"SF", pos:"QB", age:27.7, dynasty:918, redraft:12},
+    {pick:259, name:"Darnell Mooney", nfl:"NYG", pos:"WR", age:28.6, dynasty:691, redraft:0},
+    {pick:222, name:"Quinn Ewers", nfl:"MIA", pos:"QB", age:23.2, dynasty:316, redraft:0}
+  ]},
+  { slot:8, owner:"ZCOTLER55", avgAge:25.1, dynasty:58857, redraft:36747, players:[
+    {pick:8, name:"Puka Nacua", nfl:"LAR", pos:"WR", age:25.0, dynasty:8704, redraft:8037},
+    {pick:17, name:"Caleb Williams", nfl:"CHI", pos:"QB", age:24.5, dynasty:7284, redraft:8038},
+    {pick:27, name:"Colston Loveland", nfl:"CHI", pos:"TE", age:22.1, dynasty:5008, redraft:2617},
+    {pick:68, name:"Jordyn Tyson", nfl:"NO", pos:"WR", age:21.8, dynasty:3921, redraft:1410},
+    {pick:44, name:"TreVeyon Henderson", nfl:"NE", pos:"RB", age:23.6, dynasty:3714, redraft:2566},
+    {pick:53, name:"Luther Burden", nfl:"CHI", pos:"WR", age:22.4, dynasty:3462, redraft:1214},
+    {pick:77, name:"Josh Jacobs", nfl:"GB", pos:"RB", age:28.3, dynasty:3071, redraft:3354},
+    {pick:101, name:"Ty Simpson", nfl:"LAR", pos:"QB", age:23.4, dynasty:2567, redraft:1320},
+    {pick:92, name:"Matthew Stafford", nfl:"LAR", pos:"QB", age:38.3, dynasty:2403, redraft:3632},
+    {pick:140, name:"Daniel Jones", nfl:"IND", pos:"QB", age:29.0, dynasty:2364, redraft:1949},
+    {pick:116, name:"Mike Evans", nfl:"SF", pos:"WR", age:32.8, dynasty:1994, redraft:1627},
+    {pick:125, name:"Nicholas Singleton", nfl:"TEN", pos:"RB", age:22.4, dynasty:1992, redraft:279},
+    {pick:164, name:"Antonio Williams", nfl:"WAS", pos:"WR", age:21.9, dynasty:1843, redraft:60},
+    {pick:212, name:"Carson Beck", nfl:"ARI", pos:"QB", age:23.5, dynasty:1613, redraft:257},
+    {pick:173, name:"Kaytron Allen", nfl:"WAS", pos:"RB", age:23.4, dynasty:1490, redraft:93},
+    {pick:149, name:"AJ Barner", nfl:"SEA", pos:"TE", age:24.1, dynasty:1418, redraft:24},
+    {pick:188, name:"Chris Rodriguez", nfl:"JAX", pos:"RB", age:26.7, dynasty:1353, redraft:211},
+    {pick:197, name:"Jalen Nailor", nfl:"LV", pos:"WR", age:27.2, dynasty:1211, redraft:59},
+    {pick:221, name:"Eli Raridon", nfl:"NE", pos:"TE", age:22.3, dynasty:1053, redraft:0},
+    {pick:0, name:"Justin Joly", nfl:"DEN", pos:"TE", age:21.9, dynasty:931, redraft:0},
+    {pick:245, name:"Will Howard", nfl:"PIT", pos:"QB", age:24.7, dynasty:604, redraft:0},
+    {pick:0, name:"Zavion Thomas", nfl:"CHI", pos:"WR", age:22.3, dynasty:585, redraft:0},
+    {pick:236, name:"Tyquan Thornton", nfl:"KC", pos:"WR", age:25.8, dynasty:272, redraft:0}
+  ]},
+  { slot:9, owner:"SHANEREICHERT", avgAge:25.2, dynasty:51905, redraft:32530, players:[
+    {pick:9, name:"Amon-Ra St. Brown", nfl:"DET", pos:"WR", age:26.6, dynasty:7177, redraft:7295},
+    {pick:16, name:"Ashton Jeanty", nfl:"LV", pos:"RB", age:22.5, dynasty:6993, redraft:6214},
+    {pick:28, name:"Trevor Lawrence", nfl:"JAX", pos:"QB", age:26.6, dynasty:4942, redraft:6029},
+    {pick:52, name:"Ladd McConkey", nfl:"LAC", pos:"WR", age:24.5, dynasty:3744, redraft:2251},
+    {pick:45, name:"Bucky Irving", nfl:"TB", pos:"RB", age:23.8, dynasty:3352, redraft:2154},
+    {pick:69, name:"Jared Goff", nfl:"DET", pos:"QB", age:31.6, dynasty:3195, redraft:4143},
+    {pick:76, name:"Kyle Pitts", nfl:"ATL", pos:"TE", age:25.6, dynasty:2812, redraft:1293},
+    {pick:117, name:"Omar Cooper", nfl:"NYJ", pos:"WR", age:22.4, dynasty:2583, redraft:465},
+    {pick:93, name:"DJ Moore", nfl:"BUF", pos:"WR", age:29.1, dynasty:2359, redraft:1525},
+    {pick:124, name:"Isaiah Likely", nfl:"NYG", pos:"TE", age:26.1, dynasty:1985, redraft:470},
+    {pick:100, name:"Parker Washington", nfl:"JAX", pos:"WR", age:24.2, dynasty:1884, redraft:213},
+    {pick:141, name:"Elijah Sarratt", nfl:"BAL", pos:"WR", age:23.0, dynasty:1548, redraft:31},
+    {pick:165, name:"Shedeur Sanders", nfl:"CLE", pos:"QB", age:24.3, dynasty:1465, redraft:193},
+    {pick:172, name:"Mike Washington", nfl:"LV", pos:"RB", age:22.9, dynasty:1382, redraft:44},
+    {pick:148, name:"Tyrone Tracy", nfl:"NYG", pos:"RB", age:26.5, dynasty:1366, redraft:210},
+    {pick:244, name:"Cade Otton", nfl:"TB", pos:"TE", age:27.1, dynasty:944, redraft:0},
+    {pick:213, name:"Tre Tucker", nfl:"LV", pos:"WR", age:25.2, dynasty:902, redraft:0},
+    {pick:196, name:"Anthony Richardson", nfl:"IND", pos:"QB", age:24.0, dynasty:860, redraft:0},
+    {pick:189, name:"Elic Ayomanor", nfl:"TEN", pos:"WR", age:23.0, dynasty:808, redraft:0},
+    {pick:237, name:"James Conner", nfl:"ARI", pos:"RB", age:31.1, dynasty:655, redraft:0},
+    {pick:220, name:"Jaydon Blue", nfl:"DAL", pos:"RB", age:22.4, dynasty:598, redraft:0},
+    {pick:261, name:"Isaiah Bond", nfl:"CLE", pos:"WR", age:22.2, dynasty:351, redraft:0}
+  ]},
+  { slot:10, owner:"GIVEMEABTJ", avgAge:24.6, dynasty:53418, redraft:32596, players:[
+    {pick:15, name:"Malik Nabers", nfl:"NYG", pos:"WR", age:22.8, dynasty:6938, redraft:5159},
+    {pick:10, name:"Joe Burrow", nfl:"CIN", pos:"QB", age:29.4, dynasty:6814, redraft:9003},
+    {pick:29, name:"Tetairoa McMillan", nfl:"CAR", pos:"WR", age:23.1, dynasty:5305, redraft:3561},
+    {pick:70, name:"Fernando Mendoza", nfl:"LV", pos:"QB", age:22.6, dynasty:4300, redraft:3738},
+    {pick:46, name:"Quinshon Judkins", nfl:"CLE", pos:"RB", age:22.6, dynasty:4016, redraft:2528},
+    {pick:94, name:"Baker Mayfield", nfl:"TB", pos:"QB", age:31.1, dynasty:3489, redraft:4617},
+    {pick:51, name:"Brian Thomas", nfl:"JAX", pos:"WR", age:23.6, dynasty:3453, redraft:1546},
+    {pick:75, name:"Jameson Williams", nfl:"DET", pos:"WR", age:25.2, dynasty:2925, redraft:1371},
+    {pick:118, name:"Denzel Boston", nfl:"CLE", pos:"WR", age:22.5, dynasty:2239, redraft:246},
+    {pick:99, name:"Kyle Monangai", nfl:"CHI", pos:"RB", age:24.0, dynasty:1846, redraft:363},
+    {pick:123, name:"Josh Downs", nfl:"IND", pos:"WR", age:24.8, dynasty:1825, redraft:230},
+    {pick:166, name:"Chig Okonkwo", nfl:"WAS", pos:"TE", age:26.7, dynasty:1512, redraft:162},
+    {pick:142, name:"Jalen McMillan", nfl:"TB", pos:"WR", age:24.5, dynasty:1338, redraft:20},
+    {pick:200, name:"Kaleb Johnson", nfl:"PIT", pos:"RB", age:22.8, dynasty:1198, redraft:0},
+    {pick:171, name:"Juwan Johnson", nfl:"NO", pos:"TE", age:29.7, dynasty:1053, redraft:52},
+    {pick:147, name:"Terrance Ferguson", nfl:"LAR", pos:"TE", age:23.2, dynasty:1001, redraft:0},
+    {pick:214, name:"Ollie Gordon", nfl:"MIA", pos:"RB", age:22.3, dynasty:909, redraft:0},
+    {pick:190, name:"Pat Bryant", nfl:"DEN", pos:"WR", age:23.4, dynasty:747, redraft:0},
+    {pick:238, name:"Caleb Douglas", nfl:"MIA", pos:"WR", age:22.7, dynasty:744, redraft:0},
+    {pick:243, name:"Michael Mayer", nfl:"LV", pos:"TE", age:24.9, dynasty:607, redraft:0},
+    {pick:262, name:"Ray Davis", nfl:"BUF", pos:"RB", age:26.5, dynasty:587, redraft:0},
+    {pick:209, name:"Devin Neal", nfl:"NO", pos:"RB", age:22.8, dynasty:572, redraft:0}
+  ]},
+  { slot:11, owner:"PARKERGOLD11", avgAge:25.6, dynasty:57860, redraft:34615, players:[
+    {pick:11, name:"Brock Bowers", nfl:"LV", pos:"TE", age:23.4, dynasty:7857, redraft:6414},
+    {pick:14, name:"Jeremiyah Love", nfl:"ARI", pos:"RB", age:21.0, dynasty:6652, redraft:4699},
+    {pick:26, name:"Jaxson Dart", nfl:"NYG", pos:"QB", age:23.0, dynasty:5662, redraft:5810},
+    {pick:50, name:"Brock Purdy", nfl:"SF", pos:"QB", age:26.4, dynasty:4322, redraft:4873},
+    {pick:71, name:"DeVonta Smith", nfl:"PHI", pos:"WR", age:27.5, dynasty:3708, redraft:3307},
+    {pick:47, name:"Rashee Rice", nfl:"KC", pos:"WR", age:26.1, dynasty:3576, redraft:2566},
+    {pick:74, name:"Jadarian Price", nfl:"SEA", pos:"RB", age:22.6, dynasty:3536, redraft:1948},
+    {pick:122, name:"Jonah Coleman", nfl:"DEN", pos:"RB", age:22.8, dynasty:2199, redraft:500},
+    {pick:98, name:"Chuba Hubbard", nfl:"CAR", pos:"RB", age:26.9, dynasty:1939, redraft:971},
+    {pick:95, name:"Michael Wilson", nfl:"ARI", pos:"WR", age:26.2, dynasty:1925, redraft:472},
+    {pick:119, name:"Ricky Pearsall", nfl:"SF", pos:"WR", age:25.7, dynasty:1742, redraft:254},
+    {pick:143, name:"Courtland Sutton", nfl:"DEN", pos:"WR", age:30.6, dynasty:1710, redraft:816},
+    {pick:167, name:"Jacoby Brissett", nfl:"ARI", pos:"QB", age:33.4, dynasty:1619, redraft:1099},
+    {pick:191, name:"De'Zhaun Stribling", nfl:"SF", pos:"WR", age:23.4, dynasty:1576, redraft:55},
+    {pick:194, name:"T.J. Hockenson", nfl:"MIN", pos:"TE", age:28.9, dynasty:1528, redraft:316},
+    {pick:146, name:"Khalil Shakir", nfl:"BUF", pos:"WR", age:26.3, dynasty:1463, redraft:128},
+    {pick:263, name:"David Njoku", nfl:"LAC", pos:"TE", age:29.9, dynasty:1336, redraft:217},
+    {pick:218, name:"Ja'Kobi Lane", nfl:"BAL", pos:"WR", age:22.0, dynasty:1335, redraft:0},
+    {pick:215, name:"Brian Robinson", nfl:"ATL", pos:"RB", age:27.2, dynasty:1247, redraft:170},
+    {pick:242, name:"Demond Claiborne", nfl:"MIN", pos:"RB", age:22.6, dynasty:1200, redraft:0},
+    {pick:170, name:"Troy Franklin", nfl:"DEN", pos:"WR", age:23.3, dynasty:998, redraft:0},
+    {pick:239, name:"Dontayvion Wicks", nfl:"PHI", pos:"WR", age:24.9, dynasty:730, redraft:0}
+  ]},
+  { slot:12, owner:"KATZMAN696968", avgAge:26.6, dynasty:54552, redraft:37249, players:[
+    {pick:12, name:"Lamar Jackson", nfl:"BAL", pos:"QB", age:29.4, dynasty:7161, redraft:9365},
+    {pick:13, name:"Trey McBride", nfl:"ARI", pos:"TE", age:26.5, dynasty:6913, redraft:6820},
+    {pick:25, name:"Drake London", nfl:"ATL", pos:"WR", age:24.8, dynasty:5655, redraft:4849},
+    {pick:48, name:"Chris Olave", nfl:"NO", pos:"WR", age:25.9, dynasty:3844, redraft:2874},
+    {pick:49, name:"Saquon Barkley", nfl:"PHI", pos:"RB", age:29.3, dynasty:3772, redraft:5103},
+    {pick:72, name:"Marvin Harrison", nfl:"ARI", pos:"WR", age:23.8, dynasty:3525, redraft:1692},
+    {pick:73, name:"Cam Skattebo", nfl:"NYG", pos:"RB", age:24.3, dynasty:3070, redraft:1936},
+    {pick:96, name:"Kenyon Sadiq", nfl:"NYJ", pos:"TE", age:21.2, dynasty:3050, redraft:548},
+    {pick:121, name:"Rico Dowdle", nfl:"PIT", pos:"RB", age:27.9, dynasty:1879, redraft:1050},
+    {pick:97, name:"Wan'Dale Robinson", nfl:"TEN", pos:"WR", age:25.4, dynasty:1864, redraft:312},
+    {pick:144, name:"Jakobi Meyers", nfl:"JAX", pos:"WR", age:29.5, dynasty:1715, redraft:664},
+    {pick:120, name:"Blake Corum", nfl:"LAR", pos:"RB", age:25.5, dynasty:1639, redraft:356},
+    {pick:145, name:"Rhamondre Stevenson", nfl:"NE", pos:"RB", age:28.2, dynasty:1616, redraft:702},
+    {pick:192, name:"Jerry Jeudy", nfl:"CLE", pos:"WR", age:27.1, dynasty:1249, redraft:67},
+    {pick:240, name:"Kirk Cousins", nfl:"LV", pos:"QB", age:37.8, dynasty:1240, redraft:722},
+    {pick:168, name:"Jauan Jennings", nfl:"MIN", pos:"WR", age:28.9, dynasty:1218, redraft:112},
+    {pick:217, name:"Braelon Allen", nfl:"NYJ", pos:"RB", age:22.3, dynasty:1186, redraft:0},
+    {pick:216, name:"Justin Fields", nfl:"KC", pos:"QB", age:27.2, dynasty:1101, redraft:77},
+    {pick:241, name:"Dalton Schultz", nfl:"HOU", pos:"TE", age:29.9, dynasty:872, redraft:0},
+    {pick:193, name:"Chimere Dike", nfl:"TEN", pos:"WR", age:24.4, dynasty:866, redraft:0},
+    {pick:169, name:"Mason Taylor", nfl:"NYJ", pos:"TE", age:22.0, dynasty:777, redraft:0},
+    {pick:264, name:"Brashard Smith", nfl:"KC", pos:"RB", age:23.1, dynasty:340, redraft:0}
+  ]},
+];
+
+const SUPERLATIVES = [
+  { owner:"CONNORSEPT", award:"CANNON ARMS", icon:"💥", detail:"QB value of 20,650 — Josh Allen & Patrick Mahomes firing 1-2." },
+  { owner:"DANCOLUCCI", award:"THE FRANCHISE", icon:"💎", detail:"Drake Maye (QB, NE) — 8,885 dynasty pts. The league's most valuable single asset." },
+  { owner:"TMAD95", award:"TROPHY HUNTER", icon:"🏆", detail:"39,020 redraft pts — drafted like the championship is happening this year, not next." },
+  { owner:"KUHNERRR", award:"DAY CARE CHAMP", icon:"🍼", detail:"Avg age 24.1 — the league's nursery. Will be terrifying in 2028." },
+  { owner:"HDTV69", award:"GROUND & POUND", icon:"🐂", detail:"RB value of 17,600 — punishing the trenches every Sunday." },
+  { owner:"EBACCASH", award:"ALL CHIPS IN", icon:"🎰", detail:"Only +14,492 dynasty surplus. Mortgaged tomorrow for one shot at the trophy." },
+  { owner:"JUANVIDAL", award:"THE BIG BRASS", icon:"👑", detail:"League-best 59,621 dynasty points. Sitting atop the throne with both feet on the gas." },
+  { owner:"ZCOTLER55", award:"PATIENCE OF A SAINT", icon:"🔮", detail:"Dynasty surplus of +22,110 over redraft. Drafted for the long game while everyone else chased glory." },
+  { owner:"SHANEREICHERT", award:"HIGHWAY ROBBERY", icon:"🦝", detail:"Ladd McConkey at pick #52 — 3,744 dynasty pts. Daylight robbery on the back end." },
+  { owner:"GIVEMEABTJ", award:"AIR RAID", icon:"🛩️", detail:"WR value of 25,514 — the receivers are airborne." },
+  { owner:"PARKERGOLD11", award:"TIGHT END U", icon:"🎯", detail:"TE value of 10,721 — anchored by Brock Bowers." },
+  { owner:"KATZMAN696968", award:"GLORY DAYS", icon:"🪦", detail:"Avg age 26.6 — championship window is open and the alarm's going off." },
+];
+
+const fmt = n => n.toLocaleString();
+let mode = "dynasty";
+
+function positionTotals(team, m) {
+  const totals = { QB: 0, RB: 0, WR: 0, TE: 0 };
+  team.players.forEach(p => { totals[p.pos] += p[m]; });
+  return totals;
+}
+
+function renderStandings() {
+  const root = document.getElementById("standings");
+  const sorted = [...TEAMS].sort((a,b) => b[mode] - a[mode]);
+  root.innerHTML = sorted.map((t, i) => {
+    const rank = i + 1;
+    const totals = positionTotals(t, mode);
+    const sum = totals.QB + totals.RB + totals.WR + totals.TE;
+    const seg = pos => `<span style="width:${(totals[pos]/sum*100).toFixed(2)}%;background:var(--pos-${pos})"></span>`;
+    const youBadge = t.you ? `<span class="you-badge">★ Your Team</span>` : "";
+    return `
+      <div class="team rank-${rank} ${t.you ? 'you' : ''}" data-owner="${t.owner}">
+        <div class="stripe"></div>
+        <div class="body">
+          <div class="team-head">
+            <div class="rank-block">
+              <div class="num">${rank.toString().padStart(2,'0')}</div>
+              <div class="lbl">Rank</div>
+            </div>
+            <div style="flex:1; text-align:right">
+              <div class="owner">${t.owner}${youBadge}</div>
+              <div class="draft-tag">Draft Slot #${t.slot}</div>
+            </div>
+          </div>
+          <div class="team-stats">
+            <div class="stat ${mode==='dynasty' ? 'active' : ''}"><div class="v">${fmt(t.dynasty)}</div><div class="l">Dynasty</div></div>
+            <div class="stat ${mode==='redraft' ? 'active' : ''}"><div class="v">${fmt(t.redraft)}</div><div class="l">Redraft</div></div>
+            <div class="stat"><div class="v">${t.avgAge.toFixed(1)}</div><div class="l">Avg Age</div></div>
+          </div>
+          <div class="pos-bar">${seg('QB')}${seg('RB')}${seg('WR')}${seg('TE')}</div>
+          <div class="pos-legend">
+            <span><i style="background:var(--pos-QB)"></i>QB ${fmt(totals.QB)}</span>
+            <span><i style="background:var(--pos-RB)"></i>RB ${fmt(totals.RB)}</span>
+            <span><i style="background:var(--pos-WR)"></i>WR ${fmt(totals.WR)}</span>
+            <span><i style="background:var(--pos-TE)"></i>TE ${fmt(totals.TE)}</span>
+          </div>
+          <div class="expand-hint">Open Locker Room</div>
+        </div>
+        <div class="roster">
+          <div class="roster-head">
+            <span>Pick</span>
+            <span>Player</span>
+            <span style="text-align:right">${mode==='dynasty' ? 'Dyn' : 'Re'} Val</span>
+          </div>
+          ${[...t.players].sort((a,b)=>b[mode]-a[mode]).map(p => `
+            <div class="player">
+              <div class="pick-num">${p.pick}</div>
+              <div>
+                <div class="pname"><span class="pos-chip ${p.pos}">${p.pos}</span>${p.name}</div>
+                <div class="pmeta">${p.nfl} · Age ${p.age}</div>
+              </div>
+              <div class="pval">${fmt(p[mode])}</div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  root.querySelectorAll(".team").forEach(card => {
+    card.addEventListener("click", () => card.classList.toggle("open"));
+  });
+}
+
+function renderInsights() {
+  const root = document.getElementById("insights");
+  const byMode = (m) => [...TEAMS].sort((a,b) => b[m] - a[m]);
+  const dynastyKing = byMode("dynasty")[0];
+  const winNowKing = byMode("redraft")[0];
+  const youngest = [...TEAMS].sort((a,b) => a.avgAge - b.avgAge)[0];
+  const oldest = [...TEAMS].sort((a,b) => b.avgAge - a.avgAge)[0];
+  const futureShock = [...TEAMS].sort((a,b) => (b.dynasty - b.redraft) - (a.dynasty - a.redraft))[0];
+  const winNowGrip = [...TEAMS].sort((a,b) => (a.dynasty - a.redraft) - (b.dynasty - b.redraft))[0];
+
+  const qbCounts = TEAMS.map(t => ({ owner: t.owner, you: t.you, n: t.players.filter(p => p.pos==="QB").length }))
+                        .sort((a,b) => b.n - a.n);
+  const qbHoarder = qbCounts[0];
+  const qbHoarders = qbCounts.filter(t => t.n === qbHoarder.n).map(t => t.owner).join(" · ");
+
+  const allPlayers = TEAMS.flatMap(t => t.players.map(p => ({...p, owner: t.owner, you: t.you})));
+  const bestDynasty = [...allPlayers].sort((a,b) => b.dynasty - a.dynasty)[0];
+  const riskyDeepBet = [...allPlayers]
+    .filter(p => p.pick >= 33 && p.dynasty >= 4000)
+    .sort((a,b) => b.dynasty - a.dynasty)[0];
+
+  const insights = [
+    { cls:"gold", icon:"👑", label:"Top Dog", winner:`${dynastyKing.owner}${dynastyKing.you?' (You)':''}`, detail:`${fmt(dynastyKing.dynasty)} dynasty pts. Sits on top of the league with both barrels loaded.` },
+    { cls:"red", icon:"🏆", label:"Trophy Hunter", winner:`${winNowKing.owner}${winNowKing.you?' (You)':''}`, detail:`${fmt(winNowKing.redraft)} redraft pts. Built to bring home hardware this season.` },
+    { cls:"green", icon:"🌱", label:"Rookie Nation", winner:`${youngest.owner}${youngest.you?' (You)':''}`, detail:`Avg age ${youngest.avgAge.toFixed(1)}. Playing for 2027 and beyond.` },
+    { cls:"orange", icon:"🪦", label:"Glory Days", winner:`${oldest.owner}${oldest.you?' (You)':''}`, detail:`Avg age ${oldest.avgAge.toFixed(1)}. Window is now — or never.` },
+    { cls:"purple", icon:"🔮", label:"Playing The Long Con", winner:`${futureShock.owner}${futureShock.you?' (You)':''}`, detail:`Dynasty value sits +${fmt(futureShock.dynasty - futureShock.redraft)} above redraft. Patience required.` },
+    { cls:"red", icon:"💣", label:"All Chips In", winner:`${winNowGrip.owner}${winNowGrip.you?' (You)':''}`, detail:`Only +${fmt(winNowGrip.dynasty - winNowGrip.redraft)} dynasty surplus. Trade your future kicker — go win this thing.` },
+    { cls:"blue", icon:"🎯", label:"QB Collector", winner:`${qbHoarders}`, detail:`${qbHoarder.n} QBs rostered. Someone's getting fleeced in a midseason trade.` },
+    { cls:"gold", icon:"💎", label:"The Franchise", winner:`${bestDynasty.name}`, detail:`${fmt(bestDynasty.dynasty)} dynasty pts on ${bestDynasty.owner}${bestDynasty.you?' (your)':"'s"} roster. Untouchable asset.` },
+    { cls:"purple", icon:"🎲", label:"Dart Throw of the Draft", winner:`${riskyDeepBet.name}`, detail:`Pick #${riskyDeepBet.pick} by ${riskyDeepBet.owner}${riskyDeepBet.you?' (You)':''} — ${fmt(riskyDeepBet.dynasty)} dyn / ${fmt(riskyDeepBet.redraft)} re. Big bet on a small workload.` },
+  ];
+
+  root.innerHTML = insights.map(i => `
+    <div class="insight ${i.cls}">
+      <div class="icon">${i.icon}</div>
+      <div class="label">${i.label}</div>
+      <div class="winner">${i.winner}</div>
+      <div class="detail">${i.detail}</div>
+    </div>
+  `).join("");
+}
+
+function renderPositionKings() {
+  const root = document.getElementById("positions");
+  const labels = { QB: "Under Center", RB: "Backfield", WR: "Wideouts", TE: "Tight Ends" };
+  const posNames = ["QB","RB","WR","TE"];
+  root.innerHTML = posNames.map(pos => {
+    const ranked = TEAMS.map(t => {
+      const total = t.players.filter(p => p.pos === pos).reduce((s, p) => s + p[mode], 0);
+      return { owner: t.owner, you: t.you, total };
+    }).sort((a,b) => b.total - a.total).slice(0, 5);
+    return `
+      <div class="pking ${pos}">
+        <div class="pos-title ${pos}">${pos}</div>
+        <div class="pos-sub">${labels[pos]}</div>
+        <ol>
+          ${ranked.map((r, i) => `
+            <li class="${i === 0 ? 'crown' : ''} ${r.you ? 'you' : ''}">
+              <span><b>${r.owner}${r.you?' (You)':''}</b></span>
+              <span class="v">${fmt(r.total)}</span>
+            </li>
+          `).join("")}
+        </ol>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderChart() {
+  const root = document.getElementById("chart");
+  const sorted = [...TEAMS].sort((a,b) => b[mode] - a[mode]);
+  const max = Math.max(...sorted.map(t => t[mode]));
+  root.innerHTML = sorted.map(t => {
+    const totals = positionTotals(t, mode);
+    const sum = totals.QB + totals.RB + totals.WR + totals.TE;
+    const width = (sum / max) * 100;
+    const seg = pos => {
+      const count = t.players.filter(p => p.pos === pos).length;
+      const val = totals[pos];
+      const pct = (val / sum * 100).toFixed(1);
+      return `<span class="bar-seg" data-pos="${pos}" data-owner="${t.owner}" data-val="${val}" data-count="${count}" data-pct="${pct}" style="width:${pct}%;background:var(--pos-${pos})"></span>`;
+    };
+    return `
+      <div class="chart-row">
+        <div class="owner-name ${t.you ? 'you-row' : ''}">${t.you ? '★ ' : ''}${t.owner}</div>
+        <div style="position:relative;">
+          <div class="chart-bars" style="width:${width.toFixed(2)}%">${seg('QB')}${seg('RB')}${seg('WR')}${seg('TE')}</div>
+        </div>
+        <div class="chart-total">${fmt(sum)}</div>
+      </div>
+    `;
+  }).join("") + `
+    <div style="margin-top:16px; display:flex; gap:18px; flex-wrap:wrap; font-family: 'Oswald', sans-serif; font-size:11px; letter-spacing: 0.16em; text-transform: uppercase; color:var(--muted)">
+      <span><i style="display:inline-block;width:10px;height:10px;background:var(--pos-QB);margin-right:6px;vertical-align:middle"></i>QB</span>
+      <span><i style="display:inline-block;width:10px;height:10px;background:var(--pos-RB);margin-right:6px;vertical-align:middle"></i>RB</span>
+      <span><i style="display:inline-block;width:10px;height:10px;background:var(--pos-WR);margin-right:6px;vertical-align:middle"></i>WR</span>
+      <span><i style="display:inline-block;width:10px;height:10px;background:var(--pos-TE);margin-right:6px;vertical-align:middle"></i>TE</span>
+    </div>
+  `;
+}
+
+function renderTop10() {
+  const root = document.getElementById("top10");
+  const all = TEAMS.flatMap(t => t.players.map(p => ({...p, owner: t.owner, you: t.you})));
+  const top = [...all].sort((a,b) => b[mode] - a[mode]).slice(0, 10);
+  const medalClass = i => i === 0 ? "gold" : i === 1 ? "silver" : i === 2 ? "bronze" : "";
+  root.innerHTML = top.map((p, i) => `
+    <div class="topcard ${medalClass(i)}">
+      <div class="rank">${(i+1).toString().padStart(2,'0')}</div>
+      <div class="info">
+        <div class="pname"><span class="pos-chip ${p.pos}">${p.pos}</span>${p.name}</div>
+        <div class="pmeta">${p.nfl} · Age ${p.age} · ${p.owner}${p.you?' (You)':''}</div>
+      </div>
+      <div class="v">${fmt(p[mode])}</div>
+    </div>
+  `).join("");
+}
+
+function renderSuperlatives() {
+  const root = document.getElementById("superlatives");
+  if (!root || typeof SUPERLATIVES === "undefined") return;
+  root.innerHTML = SUPERLATIVES.map(s => `
+    <div class="superlative">
+      <div class="sup-head">
+        <div class="sup-icon">${s.icon}</div>
+        <div class="sup-meta">
+          <div class="sup-award">${s.award}</div>
+          <div class="sup-owner">${s.owner}</div>
+        </div>
+      </div>
+      <div class="sup-detail">${s.detail}</div>
+    </div>
+  `).join("");
+}
+
+function renderAll() {
+  renderStandings();
+  renderInsights();
+  renderSuperlatives();
+  renderPositionKings();
+  renderChart();
+  renderTop10();
+}
+
+document.querySelectorAll(".toggle button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".toggle button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    mode = btn.dataset.mode;
+    renderAll();
+  });
+});
+
+renderAll();
+
+// Roster Construction chart hover tooltip
+(function() {
+  const POS_LABELS = { QB: "Quarterback", RB: "Running Back", WR: "Wide Receiver", TE: "Tight End" };
+  const tooltip = document.getElementById("chart-tooltip");
+  const chart = document.getElementById("chart");
+  const tipChip = tooltip.querySelector(".tip-chip");
+  const tipPos = tooltip.querySelector(".tip-pos");
+  const tipOwner = tooltip.querySelector(".tip-owner");
+  const tipVal = tooltip.querySelector(".tip-val");
+  const tipMeta = tooltip.querySelector(".tip-meta");
+
+  function showTooltip(seg, x, y) {
+    const pos = seg.dataset.pos;
+    const owner = seg.dataset.owner;
+    const val = parseInt(seg.dataset.val, 10);
+    const count = parseInt(seg.dataset.count, 10);
+    const pct = seg.dataset.pct;
+    tipChip.style.background = getComputedStyle(document.documentElement).getPropertyValue(`--pos-${pos}`);
+    tipPos.textContent = `${pos} · ${POS_LABELS[pos]}`;
+    tipOwner.textContent = owner;
+    tipVal.textContent = val.toLocaleString();
+    tipMeta.textContent = `${count} player${count === 1 ? "" : "s"} · ${pct}% of roster value`;
+    tooltip.style.left = x + "px";
+    tooltip.style.top = (y - 14) + "px";
+    tooltip.classList.add("visible");
+  }
+
+  chart.addEventListener("mousemove", (e) => {
+    const seg = e.target.closest(".bar-seg");
+    if (!seg) {
+      tooltip.classList.remove("visible");
+      chart.querySelectorAll(".bar-seg.dimmed").forEach(s => s.classList.remove("dimmed"));
+      return;
+    }
+    showTooltip(seg, e.clientX, e.clientY);
+    // Dim other segments in the same row so the highlighted one stands out
+    const row = seg.closest(".chart-bars");
+    row.querySelectorAll(".bar-seg").forEach(s => {
+      if (s !== seg) s.classList.add("dimmed"); else s.classList.remove("dimmed");
+    });
+  });
+  chart.addEventListener("mouseleave", () => {
+    tooltip.classList.remove("visible");
+    chart.querySelectorAll(".bar-seg.dimmed").forEach(s => s.classList.remove("dimmed"));
+  });
+})();
+</script>
+</body>
+</html>
