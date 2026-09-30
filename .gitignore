@@ -1,0 +1,6 @@
+.netlify/
+backups/
+*.py
+publish.sh
+__pycache__/
+.DS_Store
