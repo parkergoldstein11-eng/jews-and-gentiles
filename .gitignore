@@ -7,3 +7,5 @@ __pycache__/
 .claude/
 template.html
 refresh.sh
+.DS_Store
+cache/
